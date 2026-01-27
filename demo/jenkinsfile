@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  stages {
+
+    stage('Checkout') {
+      steps {
+        echo 'Pulling code from GitHub'
+        checkout scm
+      }
+    }
+
+    stage('Build NGINX Image') {
+      steps {
+        echo 'Building NGINX image'
+        sh 'podman build -t nginx-demo:latest .'
+      }
+    }
+
+    stage('Deploy to Kubernetes') {
+      steps {
+        echo 'Deploying NGINX to Kubernetes'
+        sh 'kubectl apply -f k8s-nginx.yaml'
+      }
+    }
+  }
+}

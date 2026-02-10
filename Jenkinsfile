@@ -31,7 +31,7 @@ pipeline {
       steps {
         echo 'Pushing image to local registry'
         sh '''
-          podman push ${IMAGE_NAME}:${IMAGE_TAG}
+          podman push --tls-verify=false localhost:5000/nginx-demo:2
         '''
       }
     }

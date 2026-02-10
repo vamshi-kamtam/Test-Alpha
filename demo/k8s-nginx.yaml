@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: localhost:5000/nginx-demo:IMAGE_TAG
+        image: localhost:5000/nginx-demo:2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
